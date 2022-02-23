@@ -24,7 +24,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('comics.create', ['title' => 'Create New Book']);
     }
 
     /**
@@ -35,7 +35,21 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $book = new Book();
+        $book->title = $data['title'];
+        $book->genre = $data['genre'];
+        $book->authors = $data['authors'];
+        $book->writers = $data['authors'];
+        $book->edition = $data['edition'];
+        $book->publisher = $data['publisher'];
+        $book->isbn = $data['isbn'];
+        $book->photo = $data['photo'];
+        $book->price = $data['price'];
+        $book->save();
+        // dd($book);
+
+        return redirect()->route('comics.show', $book->id);
     }
 
     /**
@@ -46,7 +60,12 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        $data = [
+            'book' => $book,
+            'title' => $book->title
+        ];
+        return view('comics.show', $data);
+        // dd($book);
     }
 
     /**

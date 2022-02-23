@@ -21,7 +21,7 @@ class CreateBooksTable extends Migration
             $table->string('writers', 60);
             $table->string('edition', 20);
             $table->string('publisher', 50);
-            $table->integer('isbn', 13);
+            $table->string('isbn', 13);
             $table->string('photo');
             $table->float('price');
             $table->timestamps();
