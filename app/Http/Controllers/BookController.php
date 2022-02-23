@@ -14,7 +14,12 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $book = Book::paginate(20);
+        $data = [
+            'books' => $book,
+            'title' => 'Home'
+        ];
+        return view('comics.index', $data);
     }
 
     /**
@@ -49,7 +54,7 @@ class BookController extends Controller
         $book->save();
         // dd($book);
 
-        return redirect()->route('comics.show', $book->id);
+        return redirect()->route('comics.show', $book);
     }
 
     /**
