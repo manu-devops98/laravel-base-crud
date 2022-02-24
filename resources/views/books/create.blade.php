@@ -8,6 +8,7 @@
 @section('content')
 
     <div class="container">
+      <a class="btn btn-danger my-3" href="{{ route('books.index')}}">Home</a>
         <h1 class="my-3">Aggiungi nuovo Fumetto:</h1>
         <div class="row">
             <div class="col py-3">

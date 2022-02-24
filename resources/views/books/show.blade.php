@@ -5,8 +5,9 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    
         <div class="container">
+            <a class="btn btn-danger my-3" href="{{ route('books.index')}}">Home</a>
             <h1>Libro: "{{ $book->title }}"</h1>
             <ul>
                 @foreach ($book->toArray() as $key => $item)
@@ -17,5 +18,5 @@
             </ul>
             <a href="{{ url()->previous()}}" type="submit" class="btn btn-primary">Previous</a>
         </div>
-    </div>
+ 
 @endsection
