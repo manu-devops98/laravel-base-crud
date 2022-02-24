@@ -19,7 +19,7 @@ class BookController extends Controller
             'books' => $book,
             'title' => 'Home'
         ];
-        return view('comics.index', $data);
+        return view('books.index', $data);
     }
 
     /**
@@ -29,7 +29,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('comics.create', ['title' => 'Create New Book']);
+        return view('books.create', ['title' => 'Create New Book']);
     }
 
     /**
@@ -53,9 +53,10 @@ class BookController extends Controller
         // $book->price = $data['price'];
         // $book->save();
         $book->fill($data);
+        $book->save();
         // dd($book);
 
-        return redirect()->route('comics.show', $book);
+        return redirect()->route('books.show', $book->id);
     }
 
     /**
@@ -66,7 +67,8 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return view('comics.show', compact('book'));
+        // dd($book);
+        return view('books.show', compact('book'));
     }
 
     /**
@@ -77,7 +79,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('books.edit', compact('book'));
     }
 
     /**
@@ -89,7 +91,9 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $data = $request->all();
+        $book->update($data);
+        return redirect()->route('books.show', $book);
     }
 
     /**

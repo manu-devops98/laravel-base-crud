@@ -11,7 +11,7 @@
         <h1 class="mb-3">Aggiungi nuovo Fumetto:</h1>
         <div class="row">
             <div class="col">
-                <form action="{{ route('comics.store') }}" method="post">
+                <form action="{{ route('books.store') }}" method="post">
                 @csrf
                 @method('POST')
                 <div class="mb-3">
