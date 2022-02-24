@@ -42,16 +42,17 @@ class BookController extends Controller
     {
         $data = $request->all();
         $book = new Book();
-        $book->title = $data['title'];
-        $book->genre = $data['genre'];
-        $book->authors = $data['authors'];
-        $book->writers = $data['authors'];
-        $book->edition = $data['edition'];
-        $book->publisher = $data['publisher'];
-        $book->isbn = $data['isbn'];
-        $book->photo = $data['photo'];
-        $book->price = $data['price'];
-        $book->save();
+        // $book->title = $data['title'];
+        // $book->genre = $data['genre'];
+        // $book->authors = $data['authors'];
+        // $book->writers = $data['authors'];
+        // $book->edition = $data['edition'];
+        // $book->publisher = $data['publisher'];
+        // $book->isbn = $data['isbn'];
+        // $book->photo = $data['photo'];
+        // $book->price = $data['price'];
+        // $book->save();
+        $book->fill($data);
         // dd($book);
 
         return redirect()->route('comics.show', $book);
@@ -65,12 +66,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        $data = [
-            'book' => $book,
-            'title' => $book->title
-        ];
-        return view('comics.show', $data);
-        // dd($book);
+        return view('comics.show', compact('book'));
     }
 
     /**

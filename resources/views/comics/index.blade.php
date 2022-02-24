@@ -33,7 +33,7 @@
                             <td>{{ $book->genre }} </td>
                             <td>{{ $book->edition }} </td>
                             <td>{{ $book->price }} €</td>
-                            <td>{{ $book->ISBN }} </td>
+                            <td>{{ $book->isbn }} </td>
                             <td><a class="btn btn-primary" href="{{ route('comics.show', $book) }}">View</a></td>
                         </tr>
                     @endforeach

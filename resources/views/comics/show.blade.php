@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('documentTitle')
-    {{ $title }}
+    {{ $book->title }}
 @endsection
 
 @section('content')
