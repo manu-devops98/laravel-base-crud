@@ -8,9 +8,9 @@
 @section('content')
 
     <div class="container">
-        <h1 class="mb-3">Aggiungi nuovo Fumetto:</h1>
+        <h1 class="my-3">Aggiungi nuovo Fumetto:</h1>
         <div class="row">
-            <div class="col">
+            <div class="col py-3">
                 <form action="{{ route('books.store') }}" method="post">
                 @csrf
                 @method('POST')

@@ -8,9 +8,9 @@
 @section('content')
 
     <div class="container">
-        <h1 class="mb-3">Modifica Fumetto:</h1>
+        <h1 class="my-3">Modifica Fumetto:</h1>
         <div class="row">
-            <div class="col">
+            <div class="col py-3">
                 <form action="{{ route('books.update', $book->id) }}" method="post">
                 @csrf
                 @method('PUT')
