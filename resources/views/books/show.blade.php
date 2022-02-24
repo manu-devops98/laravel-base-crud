@@ -15,6 +15,7 @@
                 </li>
                 @endforeach
             </ul>
+            <a href="{{ url()->previous()}}" type="submit" class="btn btn-primary">Previous</a>
         </div>
     </div>
 @endsection
