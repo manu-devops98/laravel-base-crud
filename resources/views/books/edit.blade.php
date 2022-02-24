@@ -50,9 +50,8 @@
                   <label for="price" class="form-label">Price</label>
                   <input type="number" class="form-control" id="price" name="price" value="{{ $book->price}}">
                 </div>
-                
-                <a href="{{ url()->previous()}}" type="submit" class="btn btn-primary">Previous</a>
-                <button type="submit" class="btn btn-danger">Edit</button>
+                <a class="btn btn-danger my-3" href="{{ route('books.index')}}">Home</a>
+                <button type="submit" class="btn btn-primary">Edit</button>
           </form>
             </div>
         </div>
