@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+    public $validator = [
+        'title' => 'required|max: 100',
+        'genre' => 'required|max: 60',
+        'authors' => 'required|max: 60',
+        'writers' => 'required|max: 60',
+        'edition' => 'required|max: 20',
+        'publisher' => 'required|max: 50',
+        'isbn' => 'required|max: 13',
+        'photo' => 'required',
+        'price' => 'required',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -40,18 +51,10 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->validator);
+
         $data = $request->all();
         $book = new Book();
-        // $book->title = $data['title'];
-        // $book->genre = $data['genre'];
-        // $book->authors = $data['authors'];
-        // $book->writers = $data['authors'];
-        // $book->edition = $data['edition'];
-        // $book->publisher = $data['publisher'];
-        // $book->isbn = $data['isbn'];
-        // $book->photo = $data['photo'];
-        // $book->price = $data['price'];
-        // $book->save();
         $book->fill($data);
         $book->save();
         // dd($book);
@@ -104,6 +107,9 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return redirect()
+            ->route('books.index')
+            ->with('status', "Hai eliminato il libro '$book->title'");
     }
 }

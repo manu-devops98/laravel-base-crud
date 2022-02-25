@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+@if (session('status'))
+    <div class="alert alert-success">
+        {{session('status')}}
+    </div>
+@endif
     <div class="container">
         <div class="row">
             <h1 class="pt-3">Admin Books</h1>
@@ -17,13 +22,13 @@
                 <table class="table table-primary table-hover table-bordered border-dark">
                     <thead>
                         <tr class="table-danger border-dark">
-                            <th>Title</th>
-                            <th>Authors</th>
-                            <th>Genre</th>
-                            <th>Edition</th>
-                            <th>Price</th>
-                            <th>ISBN</th>
-                            <th>Button</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Authors</th>
+                            <th scope="col">Genre</th>
+                            <th scope="col">Edition</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">ISBN</th>
+                            <th colspan="3">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,10 +40,13 @@
                             <td>{{ $book->edition }} </td>
                             <td>{{ $book->price }} €</td>
                             <td>{{ $book->isbn }} </td>
-                            <td>
-                                <a class="btn btn-primary" href="{{ route('books.show', $book) }}">View</a>
-                                <a class="btn btn-danger" href="{{ route('books.edit', $book) }}">Edit</a>
-                            </td>
+                            <td><a class="btn btn-primary" href="{{ route('books.show', $book) }}">View</a></td>
+                             <td><a class="btn btn-primary" href="{{ route('books.edit', $book) }}">Edit</a></td>
+                            <td><form action="{{ route('books.destroy', $book->id)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input class="btn btn-danger" type="submit" value="Delete">
+                            </form></td>
                         </tr>
                     @endforeach
                     </tbody>
