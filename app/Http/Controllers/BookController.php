@@ -94,6 +94,7 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
+        $request->validate($this->validator);
         $data = $request->all();
         $book->update($data);
         return redirect()->route('books.show', $book);
